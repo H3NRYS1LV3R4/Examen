@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Empleados</title>
+	<link rel="stylesheet" href="/css/bootstrap.min.css"></head></head>
+<body>
+    <div class="container mt-5">
+        <h2>Agregar Empleados</h2>
+        <form th:action="@{/empleado/registrar_Empleado}" th:object="${empleado}" method="post" class="mt-4">
+            <div class="form-group">
+                <label for="nombreEmpleado">Nombre del Empleado</label>
+                <input type="text" th:field="*{nombreEmpleado}" class="form-control" id="nombreEmpleado" required>
+            </div>
+            <div class="form-group">
+                <label for="apellidoEmpleado">Apellido del Empleado</label>
+                <input type="text" th:field="*{apellidoEmpleado}" class="form-control" id="apellidoEmpleado" required>
+            </div>
+            <div class="form-group">
+                <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                <input type="date" th:field="*{fechaNacimiento}" class="form-control" id="fechaNacimiento">
+            </div>
+            <div class="form-group">
+                <label for="direccion">direccion</label>
+                <input type="text" th:field="*{direccion}" class="form-control" id="direccion">
+            </div>
+            <div class="form-group">
+                <label for="correo">correo</label>
+                <input type="text" th:field="*{correo}" class="form-control" id="correo">
+            </div>
+            <div class="form-group">
+                <label for="areaEntity">Area</label>
+                <select th:field="*{areaEntity}" class="form-control" id="areaEntity" required>
+                    <option th:each="area : ${area}" 
+                            th:value="${area.areaId}" 
+                            th:text="${area.nombreArea}">
+                    </option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar Empleados</button>
+        </form>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
